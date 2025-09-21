@@ -4,7 +4,8 @@ process.loadEnvFile();
 
 const envSchema = z.object({
     NODE_ENV: z.string().min(3, "Need to identify enviroment via NODE_ENV"),
-    PORT: z.string().min(1, "Need to indicate the port to serve this application via PORT"),
+    API_PORT: z.string().min(1, "Need to indicate the port to serve this application via API_PORT"),
+    API_VERSION: z.string().min(1, "Need to indicate the API version to serve this application"),
     DATABASE_HOST: z.string().min(3, "Need to identify database hostname via DATABASE_HOST"),
     DATABASE_PORT: z.string().min(1, "Need to indicate the port of the database accessed via DATABASE_PORT"),
     DATABASE_NAME: z.string().min(3, "Need to indicate database name via DATABASE_NAME"),
@@ -21,7 +22,8 @@ if(!success){
 
 export const {
     NODE_ENV,
-    PORT,
+    API_PORT,
+    API_VERSION,
     DATABASE_HOST,
     DATABASE_PORT,
     DATABASE_NAME,

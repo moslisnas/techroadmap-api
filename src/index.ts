@@ -3,12 +3,12 @@ import path from "path";
 import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import { connection } from "@db/connection";
 import { createApiRoutes } from "@routes/apiRoute";
-import { NODE_ENV, PORT } from "@config/env.config";
+import { NODE_ENV, API_PORT } from "@config/env.config";
 
 //1. Create server and consts
 const app: Express = express();
 const cors = require("cors");
-const port = PORT || 3000;
+const port = API_PORT || 3000;
 const staticPath =
   NODE_ENV === "development"
     ? __dirname // Development mode, serve files from "src"
@@ -38,7 +38,7 @@ let db_con: Connection = connection;
 //3. Home route and api index:
 app.get("/", (req: Request, res: Response) => {
   res.setHeader('Content-Type', 'application/json');
-  res.end(`{status: "ok"}`);
+  res.end(`{ status: "ok" }`);
 });
 
 //4. API routes:
