@@ -1,9 +1,9 @@
 import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import { Express, Request, Response } from "express";
 import { GenericApi } from "@api/GenericApi";
-import { TechnologyVersionRepository } from "src/repository/TechnologyVersion.repository";
-import { TechnologyVersionService } from "src/service/TechnologyVersion.service";
-import { TechnologyVersionController } from "src/controller/TechnologyVersion.controller";
+import { TechnologyVersionRepository } from "@repo/TechnologyVersion.repository";
+import { TechnologyVersionService } from "@service/TechnologyVersion.service";
+import { TechnologyVersionController } from "@controller/TechnologyVersion.controller";
 
 export class TechnologyVersionApi extends GenericApi {
   public repo: TechnologyVersionRepository;

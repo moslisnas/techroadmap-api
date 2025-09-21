@@ -1,6 +1,6 @@
 import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import { Request } from "express";
-import { GenericRepository } from "./Generic.repository";
+import { GenericRepository } from "@repo/Generic.repository";
 
 export class TechnologyVersionRepository extends GenericRepository {
   constructor(private db: Connection) {

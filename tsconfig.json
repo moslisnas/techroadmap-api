@@ -9,7 +9,10 @@
       "@config/*": ["src/config/*"],
       "@db/*": ["src/database/*"],
       "@routes/*": ["src/routes/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@controller/*": ["src/controller/*"],
+      "@service/*": ["src/service/*"],
+      "@repo/*": ["src/repository/*"]
     },
     "resolveJsonModule": true,                        /* Enable importing .json files. */
     /* Emit */

@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { TechnologyVersionRepository } from "src/repository/TechnologyVersion.repository";
+import { TechnologyVersionRepository } from "@repo/TechnologyVersion.repository";
 
 export class TechnologyVersionService {
   constructor(private repo: TechnologyVersionRepository) {}

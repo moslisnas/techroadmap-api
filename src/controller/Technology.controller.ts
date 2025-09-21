@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { TechnologyService } from "src/service/Technology.service";
+import { TechnologyService } from "@service/Technology.service";
 
 export class TechnologyController {
   constructor(private service: TechnologyService) {}

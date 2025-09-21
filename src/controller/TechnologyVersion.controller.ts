@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { TechnologyVersionService } from "src/service/TechnologyVersion.service";
+import { TechnologyVersionService } from "@service/TechnologyVersion.service";
 
 export class TechnologyVersionController {
   constructor(private service: TechnologyVersionService) {}

@@ -1,7 +1,7 @@
 import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import { Request } from "express";
-import { GenericRepository } from "./Generic.repository";
-import { TechnologyVersionRepository } from "./TechnologyVersion.repository";
+import { GenericRepository } from "@repo/Generic.repository";
+import { TechnologyVersionRepository } from "@repo/TechnologyVersion.repository";
 
 export class TechnologyRepository extends GenericRepository {
   constructor(
