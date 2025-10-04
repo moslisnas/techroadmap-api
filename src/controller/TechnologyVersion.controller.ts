@@ -9,8 +9,12 @@ export class TechnologyVersionController {
       const results = await this.service.getAll(req);
 
       res.status(200).json(results);
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(500).json({ error: String(err) });
+      }
     }
   }
 
@@ -27,8 +31,12 @@ export class TechnologyVersionController {
         results = await this.service.getById(req, id);
       }
       res.status(200).json(results);
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(500).json({ error: String(err) });
+      }
     }
   }
 
@@ -45,8 +53,12 @@ export class TechnologyVersionController {
         results = await this.service.getByIdTechnology(req, id_technology);
       }
       res.status(200).json(results);
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(500).json({ error: String(err) });
+      }
     }
   }
 }

@@ -1,7 +1,9 @@
-import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import { Request } from "express";
+import { QueryError } from "mysql2";
+import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import { GenericRepository } from "@repo/Generic.repository";
 import { TechnologyVersionRepository } from "@repo/TechnologyVersion.repository";
+import { Technology } from "@interfaces/Technology.interface";
 
 export class TechnologyRepository extends GenericRepository {
   constructor(
@@ -11,33 +13,40 @@ export class TechnologyRepository extends GenericRepository {
     super();
   }
 
-  public getAll(req: Request) {
+  public getAll(req: Request): Promise<Technology[]> {
     this.useDatabase(this.db, req);
 
-    const query = "SELECT * FROM technology";
+    const query: string = "SELECT * FROM technology";
     return new Promise((resolve, reject) => {
-      this.db.query(query, (err, results) => {
-        if (err) {
-          return reject(err);
+      this.db.query<Technology[]>(
+        query,
+        (err: QueryError | null, results: Technology[]) => {
+          if (err) {
+            return reject(err);
+          }
+          console.log(query);
+          resolve(results);
         }
-        console.log(query);
-        resolve(results);
-      });
+      );
     });
   }
 
-  public getById(id: string, req: Request) {
+  public getById(id: string, req: Request): Promise<Technology | null> {
     this.useDatabase(this.db, req);
 
-    const query = "SELECT * FROM technology WHERE id=?";
+    const query: string = "SELECT * FROM technology WHERE id=?";
     return new Promise((resolve, reject) => {
-      this.db.query(query, id, (err, results: any) => {
-        if (err) {
-          return reject(err);
+      this.db.query<Technology[]>(
+        query,
+        id,
+        (err: QueryError | null, results: Technology[]) => {
+          if (err) {
+            return reject(err);
+          }
+          console.log(query);
+          resolve(results.length > 0 ? results[0] : null);
         }
-        console.log(query);
-        resolve(results[0]);
-      });
+      );
     });
   }
 }

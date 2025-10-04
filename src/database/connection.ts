@@ -1,4 +1,4 @@
-import mysql from "mysql2";
+import mysql, { QueryError } from "mysql2";
 import { Connection } from "mysql2/typings/mysql/lib/Connection";
 import {
   DATABASE_HOST,
@@ -14,7 +14,7 @@ export const connection: Connection = mysql.createConnection({
   user: DATABASE_USERNAME,
   password: DATABASE_PASSWORD,
 });
-connection.connect((error: any) => {
+connection.connect((error: QueryError|null) => {
   if (error) {
     console.log("Database Connection Failed !!!", error);
   } else {

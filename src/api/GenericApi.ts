@@ -5,7 +5,7 @@ import { DATABASE_NAME } from "@config/env.config";
 export class GenericApi {
   public useDatabase(db_con: Connection, req: Request) {
     let useQuery = `USE ${DATABASE_NAME}`;
-    db_con.query(useQuery, (error: any) => {
+    db_con.query(useQuery, (error: Error) => {
       if (error) {
         throw error;
       }

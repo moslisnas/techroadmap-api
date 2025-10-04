@@ -11,11 +11,15 @@ export class TechnologyController {
           ? req.query.dependencies == "true"
           : false
         : false;
-      const results = await this.service.getTechnologies(req, dependencies);
+      const results = await this.service.getAll(req, dependencies);
 
       res.status(200).json(results);
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(500).json({ error: String(err) });
+      }
     }
   }
 
@@ -34,11 +38,15 @@ export class TechnologyController {
 
       let results = null;
       if (id) {
-        results = await this.service.getTechnology(req, id, dependencies);
+        results = await this.service.getById(req, id, dependencies);
       }
       res.status(200).json(results);
-    } catch (err: any) {
-      res.status(500).json({ error: err.message });
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(500).json({ error: String(err) });
+      }
     }
   }
 }

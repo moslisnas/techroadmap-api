@@ -12,7 +12,8 @@
       "@api/*": ["src/api/*"],
       "@controller/*": ["src/controller/*"],
       "@service/*": ["src/service/*"],
-      "@repo/*": ["src/repository/*"]
+      "@repo/*": ["src/repository/*"],
+      "@interfaces/*": ["src/interfaces/*"]
     },
     "resolveJsonModule": true,                        /* Enable importing .json files. */
     /* Emit */
