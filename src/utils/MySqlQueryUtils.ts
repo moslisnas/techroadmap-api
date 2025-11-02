@@ -14,8 +14,6 @@ export class MySqlQueryUtils {
         : "";
     result = sort ? " ORDER BY " + sortField + " " + orderByDirection : "";
 
-    console.log(result);
-
     return result;
   }
 }
