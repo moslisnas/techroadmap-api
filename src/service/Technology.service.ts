@@ -49,7 +49,9 @@ export class TechnologyService {
         await this.repo.technologyVersionRepository.getByIdTechnology(
           id,
           req,
-          MySqlQueryUtils.buildOrderByClause(orderBy)
+          MySqlQueryUtils.buildOrderByClause(orderBy) !== ""
+            ? MySqlQueryUtils.buildOrderByClause(orderBy)!
+            : "ORDER BY release_date DESC"
         );
       result.versions = versions;
     }
