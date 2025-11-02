@@ -13,10 +13,10 @@ export class TechnologyRepository extends GenericRepository {
     super();
   }
 
-  public getAll(req: Request): Promise<Technology[]> {
+  public getAll(req: Request, orderBy: string): Promise<Technology[]> {
     this.useDatabase(this.db, req);
 
-    const query: string = "SELECT * FROM technology";
+    const query: string = "SELECT * FROM technology" + orderBy;
     return new Promise((resolve, reject) => {
       this.db.query<Technology[]>(
         query,
@@ -31,10 +31,14 @@ export class TechnologyRepository extends GenericRepository {
     });
   }
 
-  public getById(id: string, req: Request): Promise<Technology | null> {
+  public getById(
+    id: string,
+    req: Request,
+    orderBy: string
+  ): Promise<Technology | null> {
     this.useDatabase(this.db, req);
 
-    const query: string = "SELECT * FROM technology WHERE id=?";
+    const query: string = "SELECT * FROM technology WHERE id=?" + orderBy;
     return new Promise((resolve, reject) => {
       this.db.query<Technology[]>(
         query,

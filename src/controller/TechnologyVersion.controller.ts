@@ -1,12 +1,14 @@
 import { Request, Response } from "express";
 import { TechnologyVersionService } from "@service/TechnologyVersion.service";
+import { RequestUtils } from "@utils/RequestUtils";
 
 export class TechnologyVersionController {
   constructor(private service: TechnologyVersionService) {}
 
   async getTechnologyVersions(req: Request, res: Response) {
     try {
-      const results = await this.service.getAll(req);
+      const orderBy: string | null = RequestUtils.getOrderByParam(req);
+      const results = await this.service.getAll(req, orderBy);
 
       res.status(200).json(results);
     } catch (err: unknown) {
@@ -20,15 +22,12 @@ export class TechnologyVersionController {
 
   async getTechnologyVersionById(req: Request, res: Response) {
     try {
-      const id: string | null = req.query.id
-        ? typeof req.query.id == "string"
-          ? req.query.id
-          : null
-        : null;
+      const id: string | null = RequestUtils.getFieldParam(req, "id");
+      const orderBy: string | null = RequestUtils.getOrderByParam(req);
 
       let results = null;
       if (id) {
-        results = await this.service.getById(req, id);
+        results = await this.service.getById(req, id, orderBy);
       }
       res.status(200).json(results);
     } catch (err: unknown) {
@@ -42,15 +41,19 @@ export class TechnologyVersionController {
 
   async getTechnologyVersionsByIdTechnology(req: Request, res: Response) {
     try {
-      const id_technology: string | null = req.query.id_technology
-        ? typeof req.query.id_technology == "string"
-          ? req.query.id_technology
-          : null
-        : null;
+      const id_technology: string | null = RequestUtils.getFieldParam(
+        req,
+        "id_technology"
+      );
+      const orderBy: string | null = RequestUtils.getOrderByParam(req);
 
       let results = null;
       if (id_technology) {
-        results = await this.service.getByIdTechnology(req, id_technology);
+        results = await this.service.getByIdTechnology(
+          req,
+          id_technology,
+          orderBy
+        );
       }
       res.status(200).json(results);
     } catch (err: unknown) {

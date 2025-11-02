@@ -9,10 +9,10 @@ export class TechnologyVersionRepository extends GenericRepository {
     super();
   }
 
-  public getAll(req: Request): Promise<TechnologyVersion[]> {
+  public getAll(req: Request, orderBy: string): Promise<TechnologyVersion[]> {
     this.useDatabase(this.db, req);
 
-    const query: string = "SELECT * FROM technology_version";
+    const query: string = "SELECT * FROM technology_version" + orderBy;
     return new Promise((resolve, reject) => {
       this.db.query<TechnologyVersion[]>(
         query,
@@ -27,10 +27,15 @@ export class TechnologyVersionRepository extends GenericRepository {
     });
   }
 
-  public getById(id: string, req: Request): Promise<TechnologyVersion | null> {
+  public getById(
+    id: string,
+    req: Request,
+    orderBy: string
+  ): Promise<TechnologyVersion | null> {
     this.useDatabase(this.db, req);
 
-    const query: string = "SELECT * FROM technology_version WHERE id=?";
+    const query: string =
+      "SELECT * FROM technology_version WHERE id=?" + orderBy;
     return new Promise((resolve, reject) => {
       this.db.query<TechnologyVersion[]>(
         query,
@@ -48,12 +53,13 @@ export class TechnologyVersionRepository extends GenericRepository {
 
   public getByIdTechnology(
     id_technology: string,
-    req: Request
+    req: Request,
+    orderBy: string
   ): Promise<TechnologyVersion[]> {
     this.useDatabase(this.db, req);
 
     const query: string =
-      "SELECT * FROM technology_version WHERE id_technology=?";
+      "SELECT * FROM technology_version WHERE id_technology=?" + orderBy;
     return new Promise((resolve, reject) => {
       this.db.query<TechnologyVersion[]>(
         query,

@@ -13,7 +13,8 @@
       "@controller/*": ["src/controller/*"],
       "@service/*": ["src/service/*"],
       "@repo/*": ["src/repository/*"],
-      "@interfaces/*": ["src/interfaces/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "resolveJsonModule": true,                        /* Enable importing .json files. */
     /* Emit */
