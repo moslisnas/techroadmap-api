@@ -29,7 +29,11 @@
     "strictPropertyInitialization": true,             /* Check for class properties that are declared but not set in the constructor. */
     "alwaysStrict": true,                             /* Ensure 'use strict' is always emitted. */
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "plugins": [
+      { "transform": "typescript-transform-paths" },
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
