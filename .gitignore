@@ -4,3 +4,4 @@
 package-lock.json
 node_modules
 dist
+pnpm-lock.yaml
