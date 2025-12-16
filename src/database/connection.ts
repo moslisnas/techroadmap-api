@@ -13,6 +13,9 @@ export const connection: Connection = mysql.createConnection({
   port: Number(DATABASE_PORT),
   user: DATABASE_USERNAME,
   password: DATABASE_PASSWORD,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 connection.connect((error: QueryError|null) => {
   if (error) {
