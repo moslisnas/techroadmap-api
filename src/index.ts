@@ -23,6 +23,7 @@ if (NODE_ENV === "development") {
 else {
   //TODO
   console.log("NO DEVELOPMENT CONFIGURATION");
+  app.use(cors());
   /*app.use(
   cors({
     origin: "http://localhost:4200",
